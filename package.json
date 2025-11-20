@@ -9,7 +9,10 @@
     "lint": "next lint",
     "dev:frontend": "npm --prefix frontend run dev",
     "dev:backend": "npm --prefix backend run dev",
-    "dev:apps": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\""
+    "dev:apps": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "build:frontend": "cd frontend && npm install && npm run build",
+    "build:backend": "cd backend && npm install",
+    "deploy:render": "echo 'Push to GitHub and deploy via Render Dashboard'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

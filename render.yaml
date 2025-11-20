@@ -1,0 +1,37 @@
+services:
+  # Backend API Web Service
+  - type: web
+    name: medicine-finder-api
+    env: node
+    plan: starter
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DB
+        value: medicine_search
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: https://medicine-finder-frontend.onrender.com
+      - key: GOOGLE_MAPS_API_KEY
+        sync: false
+
+  # Frontend Static Site
+  - type: web
+    name: medicine-finder-frontend
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://medicine-finder-api.onrender.com
+      - key: VITE_GOOGLE_MAPS_API_KEY
+        sync: false
