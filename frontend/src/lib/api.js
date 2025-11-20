@@ -1,5 +1,5 @@
 const isDev = import.meta.env.DEV
-const BASE = isDev ? "" : (import.meta.env.VITE_API_BASE_URL || "").replace(/\/$/, "")
+const BASE = isDev ? "" : (import.meta.env.VITE_API_BASE_URL || "https://your-backend-url.onrender.com").replace(/\/$/, "")
 
 export async function apiFetch(path, options = {}) {
   const url = `${BASE}${path}`
